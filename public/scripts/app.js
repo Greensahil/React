@@ -32,26 +32,53 @@ var template = React.createElement(
   )
 );
 
-var templateTwo = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    'Andrew Mead'
-  ),
-  React.createElement(
-    'p',
-    null,
-    'Age: 26'
-  ),
-  React.createElement(
-    'p',
-    null,
-    'Location: Philadelphia'
-  )
-);
+var count = 0;
+
+var addOne = function addOne() {
+  count++;
+  renderCounterApp();
+};
+
+var minusOne = function minusOne() {
+  count--;
+  renderCounterApp();
+};
+
+var reset = function reset() {
+  count = 0;
+  renderCounterApp();
+};
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+var renderCounterApp = function renderCounterApp() {
+  var templateTwo = React.createElement(
+    'div',
+    null,
+    React.createElement(
+      'h1',
+      null,
+      'Count : ',
+      count,
+      React.createElement(
+        'button',
+        { onClick: addOne, className: 'button' },
+        '+1'
+      ),
+      React.createElement(
+        'button',
+        { onClick: minusOne, className: 'button' },
+        '-1'
+      ),
+      React.createElement(
+        'button',
+        { onClick: reset, className: 'button' },
+        'reset'
+      )
+    )
+  );
+
+  ReactDOM.render(templateTwo, appRoot);
+};
+
+renderCounterApp();

@@ -12,14 +12,46 @@ var template = (
   </div>
 );
 
-var templateTwo = (
-  <div>
-    <h1>Andrew Mead</h1>
-    <p>Age: 26</p>
-    <p>Location: Philadelphia</p>
-  </div>
-);
+let count = 0;
+
+const addOne = ()=>{
+ count++
+ renderCounterApp();
+}
+
+const minusOne = ()=>{
+  count--
+  renderCounterApp();
+}
+
+const reset = ()=>{
+  count = 0
+  renderCounterApp();
+}
+
+
+
+
+
+
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+
+const  renderCounterApp = ()=>{
+  const templateTwo = (
+    <div>
+      <h1>
+        Count : {count}
+        <button onClick={addOne} className="button">+1</button>
+        <button onClick={minusOne} className="button">-1</button>
+        <button onClick={reset} className="button">reset</button>
+      </h1>
+    </div>
+  )
+  
+  ReactDOM.render(templateTwo, appRoot);
+
+}
+
+renderCounterApp();
